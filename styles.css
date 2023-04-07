@@ -5,7 +5,6 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
 /* Header */
 header {
   display: flex;
@@ -32,10 +31,28 @@ main {
   align-items: center;
 }
 
+/* Name Input and Game Buttons Container */
+.name-input-container,
+.game-buttons-container {
+  margin-top: 20px;
+}
+
+/* Name Input */
+input {
+  padding: 10px;
+}
+
+/* Game Buttons */
+button {
+  padding: 10px;
+  background-color: #34c3f0;
+  border: none;
+  border-radius: 10px;
+}
+
+/* Game Grid */
 .game-grid {
   margin-top: 40px;
-  background-color: lightblue;
-
   display: grid;
   width: 500px;
   height: 500px;
@@ -46,4 +63,11 @@ main {
 
 .section {
   border: 1px solid;
+  background-color: white;
+}
+
+.section:hover {
+  scale: 1.05;
+  cursor: pointer;
+  border: 2px solid;
 }
