@@ -20,9 +20,12 @@ const Gameboard = (() => {
     render();
   }
 
+  const getGameboard = () => gameboard; 
+
   return {
     render,
-    update
+    update,
+    getGameboard
   }
 
 })();
@@ -61,20 +64,42 @@ const Game = (() => {
 
   const handleClick = (event) => {
     let index = parseInt(event.target.id.split("-")[1]);
+
+    if (Gameboard.getGameboard()[index] !=="")
+      return;
+  
     Gameboard.update(index, players[currentPlayerIndex].mark);
+
+    if(checkForWin(Gameboard.getGameboard(), players[currentPlayerIndex].mark) {
+      gameOver = true;
+      alert(`${players[currentPlayerIndex].name} Won!`)
+    }
 
     currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;
   }
 
+  const restart = () => {
+    for (let i=0; i < 9; i++) {
+      Gameboard.update(i, "");
+    }
+    Gameboard.render();
+  }
+
   return {
     start,
+    restart,
     handleClick
   }
 
 })();
 
+const restartButton = document.querySelector('#restart-button');
 const startButton = document.querySelector("#start-button");
 
 startButton.addEventListener('click', ()=> {
   Game.start();
 });
+
+restartButton.addEventListener('click', () => {
+  Game.restart();
+})
